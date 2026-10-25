@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hire Car | Professional Car Hire &amp; Rental</title>
+  <meta name="description" content="Hire Car – reliable, affordable car hire solutions for business and leisure. Wide range of vehicles, flexible terms, and excellent customer service.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0f4c81;
+      --primary-dark: #0a3559;
+      --accent: #e8b923;
+      --text: #1a1a1a;
+      --text-muted: #5a6570;
+      --bg: #ffffff;
+      --bg-alt: #f5f7fa;
+      --border: #e2e8f0;
+      --shadow: 0 4px 20px rgba(15, 76, 129, 0.08);
+      --radius: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ---------- Header ---------- */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.2s;
+    }
+
+    .header.scrolled {
+      box-shadow: var(--shadow);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.35rem;
+      color: var(--primary);
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--primary);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      color: var(--text);
+    }
+
+    .btn-accent:hover {
+      background: #d4a61f;
+      transform: translateY(-1px);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      padding: 140px 0 100px;
+      background: linear-gradient(135deg, #f0f6fc 0%, #ffffff 50%, #f8fafc 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 50%;
+      height: 80%;
+      background: radial-gradient(circle, rgba(15, 76, 129, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2.4rem, 5vw, 3.4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--primary-dark);
+      margin-bottom: 20px;
+    }
+
+    .hero-content h1 span {
+      color: var(--primary);
+    }
+
+    .hero-content p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      max-width: 480px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .stat span {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-card {
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: 0 20px 50px rgba(15, 76, 129, 0.12);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .hero-card-img {
+      height: 280px;
+      background: linear-gradient(145deg, #1a5a96, #0f4c81);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 4rem;
+    }
+
+    .hero-card-body {
+      padding: 24px;
+    }
+
+    .hero-card-body h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .hero-card-body p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .price small {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    /* ---------- Sections ---------- */
+    section {
+      padding: 90px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 56px;
+    }
+
+    .section-header .eyebrow {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 16px;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    /* ---------- About ---------- */
+    .about {
+      background: var(--bg);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-content h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.2rem);
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 20px;
+    }
+
+    .about-content p {
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      font-size: 1.05rem;
+    }
+
+    .about-list {
+      list-style: none;
+      margin: 28px 0;
+    }
+
+    .about-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-size: 1rem;
+    }
+
+    .about-list .check {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      margin-top: 2px;
+    }
+
+    .about-image {
+      background: linear-gradient(160deg, #e8f1f8, #d0e4f5);
+      border-radius: var(--radius);
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      color: var(--primary);
+      border: 1px solid var(--border);
+    }
+
+    /* ---------- Fleet ---------- */
+    .fleet {
+      background: var(--bg-alt);
+    }
+
+    .fleet-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .fleet-card {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .fleet-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(15, 76, 129, 0.14);
+    }
+
+    .fleet-img {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      color: white;
+    }
+
+    .fleet-img.economy { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+    .fleet-img.suv { background: linear-gradient(135deg, #0f766e, #115e59); }
+    .fleet-img.luxury { background: linear-gradient(135deg, #4c1d95, #5b21b6); }
+    .fleet-img.van { background: linear-gradient(135deg, #b45309, #92400e); }
+    .fleet-img.electric { background: linear-gradient(135deg, #059669, #047857); }
+    .fleet-img.premium { background: linear-gradient(135deg, #1e293b, #0f172a); }
+
+    .fleet-body {
+      padding: 24px;
+    }
+
+    .fleet-body h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .fleet-body p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .fleet-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
+    .fleet-meta .from {
+      color: var(--text-muted);
+    }
+
+    .fleet-meta .amount {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 1.15rem;
+    }
+
+    /* ---------- Why Us ---------- */
+    .why {
+      background: var(--bg);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+    }
+
+    .feature-card {
+      text-align: center;
+      padding: 32px 20px;
+      border-radius: var(--radius);
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .feature-card:hover {
+      border-color: var(--primary);
+      background: #f0f6fc;
+    }
+
+    .feature-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 20px;
+      background: var(--primary);
+      color: white;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    /* ---------- CTA ---------- */
+    .cta {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      text-align: center;
+      padding: 80px 0;
+    }
+
+    .cta h2 {
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      margin-bottom: 16px;
+    }
+
+    .cta p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 520px;
+      margin: 0 auto 32px;
+    }
+
+    .cta .btn-accent {
+      font-size: 1.05rem;
+      padding: 14px 32px;
+    }
+
+    /* ---------- Contact ---------- */
+    .contact {
+      background: var(--bg-alt);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 48px;
+    }
+
+    .contact-info h3 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      color: var(--primary-dark);
+    }
+
+    .contact-info > p {
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .contact-item .icon {
+      width: 44px;
+      height: 44px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .contact-item strong {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 2px;
+    }
+
+    .contact-item span {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .contact-form {
+      background: white;
+      padding: 36px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .form-group textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    /* ---------- Footer ---------- */
+    .footer {
+      background: var(--primary-dark);
+      color: rgba(255, 255, 255, 0.85);
+      padding: 60px 0 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand .logo {
+      color: white;
+      margin-bottom: 16px;
+    }
+
+    .footer-brand .logo-icon {
+      background: var(--accent);
+      color: var(--text);
+    }
+
+    .footer-brand p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      max-width: 280px;
+    }
+
+    .footer h4 {
+      color: white;
+      font-size: 1rem;
+      margin-bottom: 18px;
+    }
+
+    .footer ul {
+      list-style: none;
+    }
+
+    .footer ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer ul a {
+      font-size: 0.95rem;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+
+    .footer ul a:hover {
+      opacity: 1;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      opacity: 0.75;
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 960px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .fleet-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 24px;
+        gap: 16px;
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .hero {
+        padding: 120px 0 70px;
+      }
+
+      .hero-stats {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .fleet-grid,
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container nav">
+      <a href="#home" class="logo">
+        <span class="logo-icon">🚗</span>
+        Hire Car
+      </a>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#fleet">Fleet</a></li>
+          <li><a href="#why">Why Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact" class="btn btn-primary" style="padding: 10px 20px;">Book Now</a></li>
+        </ul>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <h1>Drive Your Way with <span>Hire Car</span></h1>
+        <p>Reliable, flexible and competitively priced car hire for business trips, holidays and everyday needs. Quality vehicles, transparent rates and friendly service.</p>
+        <div class="hero-actions">
+          <a href="#fleet" class="btn btn-primary">View Our Fleet</a>
+          <a href="#contact" class="btn btn-outline">Get a Quote</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>500+</strong>
+            <span>Vehicles Available</span>
+          </div>
+          <div class="stat">
+            <strong>12k+</strong>
+            <span>Happy Customers</span>
+          </div>
+          <div class="stat">
+            <strong>15</strong>
+            <span>Years Experience</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-img">🚘</div>
+          <div class="hero-card-body">
+            <h3>Popular Choice</h3>
+            <p>Compact &amp; efficient – ideal for city driving and short getaways.</p>
+            <div class="price">From $45 <small>/ day</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="container about-grid">
+      <div class="about-image">🚙</div>
+      <div class="about-content">
+        <p class="eyebrow" style="color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.85rem; margin-bottom: 12px;">About Hire Car</p>
+        <h2>Your Trusted Partner in Car Hire</h2>
+        <p>Hire Car has been providing dependable vehicle rental services for over 15 years. We specialise in flexible short- and long-term hire for individuals, families and businesses.</p>
+        <p>From economy cars to premium SUVs and commercial vans, our well-maintained fleet is ready when you need it. We pride ourselves on clear pricing, straightforward booking and genuine customer care.</p>
+        <ul class="about-list">
+          <li><span class="check">✓</span> Fully maintained, late-model vehicles</li>
+          <li><span class="check">✓</span> Flexible daily, weekly &amp; monthly rates</li>
+          <li><span class="check">✓</span> Competitive insurance options</li>
+          <li><span class="check">✓</span> 24/7 roadside assistance support</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">Talk to Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fleet -->
+  <section class="fleet" id="fleet">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Our Fleet</span>
+        <h2>Vehicles for Every Journey</h2>
+        <p>Choose from a wide range of well-kept cars and vans to suit your needs and budget.</p>
+      </div>
+      <div class="fleet-grid">
+        <article class="fleet-card">
+          <div class="fleet-img economy">🚗</div>
+          <div class="fleet-body">
+            <h3>Economy</h3>
+            <p>Fuel-efficient compact cars perfect for city trips and budget-conscious travellers.</p>
+            <div class="fleet-meta">
+              <span class="from">From</span>
+              <span class="amount">$39/day</span>
+            </div>
+          </div>
+        </article>
+        <article class="fleet-card">
+          <div class="fleet-img suv">🚙</div>
+          <div class="fleet-body">
+            <h3>SUV &amp; Crossover</h3>
+            <p>Spacious and comfortable for families, road trips and extra luggage capacity.</p>
+            <div class="fleet-meta">
+              <span class="from">From</span>
+              <span class="amount">$69/day</span>
+            </div>
+          </div>
+        </article>
+        <article class="fleet-card">
+          <div class="fleet-img luxury">✨</div>
+          <div class="fleet-body">
+            <h3>Luxury</h3>
+            <p>Premium sedans and executive vehicles for business or special occasions.</p>
+            <div class="fleet-meta">
+              <span class="from">From</span>
+              <span class="amount">$119/day</span>
+            </div>
+          </div>
+        </article>
+        <article class="fleet-card">
+          <div class="fleet-img van">🚐</div>
+          <div class="fleet-body">
+            <h3>Vans &amp; People Movers</h3>
+            <p>Ideal for group travel, removals or commercial deliveries.</p>
+            <div class="fleet-meta">
+              <span class="from">From</span>
+              <span class="amount">$79/day</span>
+            </div>
+          </div>
+        </article>
+        <article class="fleet-card">
+          <div class="fleet-img electric">⚡</div>
+          <div class="fleet-body">
+            <h3>Electric &amp; Hybrid</h3>
+            <p>Eco-friendly options with lower running costs and a quieter drive.</p>
+            <div class="fleet-meta">
+              <span class="from">From</span>
+              <span class="amount">$59/day</span>
+            </div>
+          </div>
+        </article>
+        <article class="fleet-card">
+          <div class="fleet-img premium">🏎️</div>
+          <div class="fleet-body">
+            <h3>Premium &amp; Performance</h3>
+            <p>High-spec models for those who want an elevated driving experience.</p>
+            <div class="fleet-meta">
+              <span class="from">From</span>
+              <span class="amount">$149/day</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Us -->
+  <section class="why" id="why">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Why Choose Hire Car</span>
+        <h2>Simple, Transparent &amp; Reliable</h2>
+        <p>We focus on the details that matter so your hire experience is smooth from start to finish.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">💰</div>
+          <h3>Clear Pricing</h3>
+          <p>No hidden fees. Know exactly what you’ll pay before you book.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📅</div>
+          <h3>Flexible Terms</h3>
+          <p>Daily, weekly or monthly hire with easy extension options.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3>Peace of Mind</h3>
+          <p>Comprehensive insurance choices and 24/7 roadside support.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⭐</div>
+          <h3>Quality Fleet</h3>
+          <p>Regularly serviced, late-model vehicles you can depend on.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <h2>Ready to Hit the Road?</h2>
+      <p>Get a fast, no-obligation quote or speak with our team about the right vehicle for your next trip.</p>
+      <a href="#contact" class="btn btn-accent">Request a Quote</a>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Contact</span>
+        <h2>Get in Touch</h2>
+        <p>Tell us what you need and we’ll help you find the perfect hire.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Hire Car</h3>
+          <p>We’re here to help with bookings, quotes and any questions about our fleet.</p>
+          <div class="contact-item">
+            <div class="icon">📍</div>
+            <div>
+              <strong>Address</strong>
+              <span>123 Motorway Drive, Business Park, Your City</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="icon">📞</div>
+            <div>
+              <strong>Phone</strong>
+              <span>+1 (555) 123-4567</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="icon">✉️</div>
+            <div>
+              <strong>Email</strong>
+              <span>bookings@hirecar.example</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="icon">🕐</div>
+            <div>
+              <strong>Hours</strong>
+              <span>Mon–Fri 8am–6pm · Sat 9am–2pm</span>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form" action="#" method="post" onsubmit="event.preventDefault(); alert('Thank you! In a live site this would send your enquiry.');">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" required placeholder="Jane Smith">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required placeholder="jane@example.com">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="+1 555 000 0000">
+            </div>
+            <div class="form-group">
+              <label for="vehicle">Vehicle Interest</label>
+              <select id="vehicle" name="vehicle">
+                <option value="">Select a category</option>
+                <option>Economy</option>
+                <option>SUV &amp; Crossover</option>
+                <option>Luxury</option>
+                <option>Vans &amp; People Movers</option>
+                <option>Electric &amp; Hybrid</option>
+                <option>Premium &amp; Performance</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Dates, pickup location, or any special requirements..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Send Enquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#home" class="logo">
+            <span class="logo-icon">🚗</span>
+            Hire Car
+          </a>
+          <p>Professional car hire services you can rely on. Quality vehicles, fair prices and customer-first service.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#fleet">Fleet</a></li>
+            <li><a href="#why">Why Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#fleet">Short-term Hire</a></li>
+            <li><a href="#fleet">Long-term Hire</a></li>
+            <li><a href="#fleet">Business Fleet</a></li>
+            <li><a href="#contact">Corporate Accounts</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
+            <li><a href="mailto:bookings@hirecar.example">bookings@hirecar.example</a></li>
+            <li>Mon–Fri 8am–6pm</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Hire Car. All rights reserved.</span>
+        <span>Professional Car Hire &amp; Rental</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // Header shadow on scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY + 100;
+      sections.forEach(section => {
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+        const id = section.getAttribute('id');
+        const link = document.querySelector(`.nav-links a[href="#${id}"]`);
+        if (link) {
+          if (scrollY >= top && scrollY < top + height) {
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+            link.classList.add('active');
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
