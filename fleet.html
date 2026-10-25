@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Fleet | Hire Car – Cars, SUVs, Vans &amp; More</title>
+  <meta name="description" content="Browse Hire Car’s full fleet: economy, SUV, luxury, vans, electric and premium vehicles. Transparent daily rates and flexible hire terms.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0f4c81; --primary-dark: #0a3559; --accent: #e8b923;
+      --text: #1a1a1a; --text-muted: #5a6570; --bg: #ffffff; --bg-alt: #f5f7fa;
+      --border: #e2e8f0; --shadow: 0 4px 20px rgba(15, 76, 129, 0.08); --radius: 12px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border); transition: box-shadow 0.2s;
+    }
+    .header.scrolled { box-shadow: var(--shadow); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.35rem; color: var(--primary); }
+    .logo-icon { width: 36px; height: 36px; background: var(--primary); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 0.95rem; font-weight: 500; color: var(--text-muted); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; font-size: 0.95rem; font-weight: 600; border-radius: 8px; border: none; cursor: pointer; transition: all 0.2s; }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
+    .btn-outline:hover { background: var(--primary); color: white; }
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    .menu-toggle span { display: block; width: 24px; height: 2px; background: var(--text); margin: 5px 0; }
+
+    .page-hero {
+      padding: 140px 0 70px;
+      background: linear-gradient(135deg, #f0f6fc 0%, #ffffff 100%);
+      text-align: center;
+    }
+    .page-hero .eyebrow { display: inline-block; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary); margin-bottom: 12px; }
+    .page-hero h1 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; color: var(--primary-dark); margin-bottom: 16px; }
+    .page-hero p { font-size: 1.1rem; color: var(--text-muted); max-width: 560px; margin: 0 auto; }
+
+    section { padding: 80px 0; }
+    .section-header { text-align: center; max-width: 620px; margin: 0 auto 48px; }
+    .section-header h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 700; color: var(--primary-dark); margin-bottom: 12px; }
+    .section-header p { color: var(--text-muted); }
+
+    .fleet-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .fleet-card {
+      background: white; border-radius: var(--radius); overflow: hidden;
+      border: 1px solid var(--border); box-shadow: var(--shadow);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .fleet-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(15, 76, 129, 0.14); }
+    .fleet-img {
+      height: 180px; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; color: white;
+    }
+    .fleet-img.economy { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+    .fleet-img.suv { background: linear-gradient(135deg, #0f766e, #115e59); }
+    .fleet-img.luxury { background: linear-gradient(135deg, #4c1d95, #5b21b6); }
+    .fleet-img.van { background: linear-gradient(135deg, #b45309, #92400e); }
+    .fleet-img.electric { background: linear-gradient(135deg, #059669, #047857); }
+    .fleet-img.premium { background: linear-gradient(135deg, #1e293b, #0f172a); }
+    .fleet-body { padding: 24px; }
+    .fleet-body h3 { font-size: 1.2rem; margin-bottom: 8px; }
+    .fleet-body p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 14px; }
+    .fleet-features { list-style: none; margin-bottom: 16px; font-size: 0.9rem; color: var(--text-muted); }
+    .fleet-features li { margin-bottom: 6px; padding-left: 18px; position: relative; }
+    .fleet-features li::before { content: '•'; position: absolute; left: 0; color: var(--primary); }
+    .fleet-meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; }
+    .fleet-meta .from { color: var(--text-muted); }
+    .fleet-meta .amount { font-weight: 700; color: var(--primary); font-size: 1.15rem; }
+
+    .info-box {
+      background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 32px; margin-top: 48px;
+    }
+    .info-box h3 { font-size: 1.25rem; color: var(--primary-dark); margin-bottom: 12px; }
+    .info-box p { color: var(--text-muted); margin-bottom: 12px; }
+    .info-box ul { margin-left: 20px; color: var(--text-muted); }
+    .info-box li { margin-bottom: 6px; }
+
+    .cta {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white; text-align: center; padding: 70px 0;
+    }
+    .cta h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 14px; }
+    .cta p { opacity: 0.9; max-width: 480px; margin: 0 auto 28px; }
+    .btn-accent { background: var(--accent); color: var(--text); }
+    .btn-accent:hover { background: #d4a61f; transform: translateY(-1px); }
+
+    .footer {
+      background: var(--primary-dark); color: rgba(255,255,255,0.85); padding: 60px 0 30px;
+    }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+    .footer-brand .logo { color: white; margin-bottom: 16px; }
+    .footer-brand .logo-icon { background: var(--accent); color: var(--text); }
+    .footer-brand p { font-size: 0.95rem; line-height: 1.7; max-width: 280px; }
+    .footer h4 { color: white; font-size: 1rem; margin-bottom: 18px; }
+    .footer ul { list-style: none; }
+    .footer ul li { margin-bottom: 10px; }
+    .footer ul a { font-size: 0.95rem; opacity: 0.85; }
+    .footer ul a:hover { opacity: 1; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.12); padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; opacity: 0.75;
+    }
+
+    @media (max-width: 960px) {
+      .fleet-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none; position: absolute; top: 72px; left: 0; right: 0; background: white;
+        flex-direction: column; padding: 24px; gap: 16px; border-bottom: 1px solid var(--border); box-shadow: var(--shadow);
+      }
+      .nav-links.open { display: flex; }
+      .menu-toggle { display: block; }
+      .fleet-grid, .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container nav">
+      <a href="index.html" class="logo"><span class="logo-icon">🚗</span> Hire Car</a>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="fleet.html" class="active">Fleet</a></li>
+          <li><a href="why.html">Why Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html" class="btn btn-primary" style="padding: 10px 20px;">Book Now</a></li>
+        </ul>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Our Fleet</span>
+      <h1>Vehicles for Every Journey</h1>
+      <p>From compact city cars to spacious SUVs, luxury sedans and commercial vans — all regularly maintained and ready to hire.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="fleet-grid">
+        <article class="fleet-card">
+          <div class="fleet-img economy">🚗</div>
+          <div class="fleet-body">
+            <h3>Economy</h3>
+            <p>Fuel-efficient compact cars ideal for city driving, airport runs and short trips.</p>
+            <ul class="fleet-features">
+              <li>4–5 seats · Small boot</li>
+              <li>Excellent fuel economy</li>
+              <li>Easy parking &amp; handling</li>
+            </ul>
+            <div class="fleet-meta"><span class="from">From</span><span class="amount">$39/day</span></div>
+          </div>
+        </article>
+        <article class="fleet-card">
+          <div class="fleet-img suv">🚙</div>
+          <div class="fleet-body">
+            <h3>SUV &amp; Crossover</h3>
+            <p>Comfortable, higher seating position with extra space for families and luggage.</p>
+            <ul class="fleet-features">
+              <li>5–7 seats available</li>
+              <li>Higher ground clearance</li>
+              <li>Great for road trips</li>
+            </ul>
+            <div class="fleet-meta"><span class="from">From</span><span class="amount">$69/day</span></div>
+          </div>
+        </article>
+        <article class="fleet-card">
+          <div class="fleet-img luxury">✨</div>
+          <div class="fleet-body">
+            <h3>Luxury</h3>
+            <p>Premium sedans and executive cars for business travel and special occasions.</p>
+            <ul class="fleet-features">
+              <li>Leather interiors</li>
+              <li>Advanced safety features</li>
+              <li>Quiet, refined ride</li>
+            </ul>
+            <div class="fleet-meta"><span class="from">From</span><span class="amount">$119/day</span></div>
+          </div>
+        </article>
+        <article class="fleet-card">
+          <div class="fleet-img van">🚐</div>
+          <div class="fleet-body">
+            <h3>Vans &amp; People Movers</h3>
+            <p>Spacious options for groups, removals, deliveries and larger loads.</p>
+            <ul class="fleet-features">
+              <li>8–12 seat people movers</li>
+              <li>Cargo &amp; panel vans</li>
+              <li>Flexible commercial hire</li>
+            </ul>
+            <div class="fleet-meta"><span class="from">From</span><span class="amount">$79/day</span></div>
+          </div>
+        </article>
+        <article class="fleet-card">
+          <div class="fleet-img electric">⚡</div>
+          <div class="fleet-body">
+            <h3>Electric &amp; Hybrid</h3>
+            <p>Lower running costs and a quieter drive with modern electric and hybrid models.</p>
+            <ul class="fleet-features">
+              <li>Reduced emissions</li>
+              <li>Charging guidance available</li>
+              <li>Smooth, efficient performance</li>
+            </ul>
+            <div class="fleet-meta"><span class="from">From</span><span class="amount">$59/day</span></div>
+          </div>
+        </article>
+        <article class="fleet-card">
+          <div class="fleet-img premium">🏎️</div>
+          <div class="fleet-body">
+            <h3>Premium &amp; Performance</h3>
+            <p>High-spec vehicles for drivers who want more power, style and technology.</p>
+            <ul class="fleet-features">
+              <li>Performance engines</li>
+              <li>Premium audio &amp; tech</li>
+              <li>Distinctive styling</li>
+            </ul>
+            <div class="fleet-meta"><span class="from">From</span><span class="amount">$149/day</span></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="info-box">
+        <h3>Hire Terms &amp; What’s Included</h3>
+        <p>Rates shown are indicative daily starting prices and may vary by season, duration and vehicle availability. Longer hires typically attract lower daily rates.</p>
+        <ul>
+          <li>Standard hire includes basic insurance options (excess applies)</li>
+          <li>Additional drivers, child seats and GPS available on request</li>
+          <li>24/7 roadside assistance support for the duration of your hire</li>
+          <li>Flexible daily, weekly and monthly terms — ask about long-term discounts</li>
+          <li>All vehicles are regularly serviced and undergo pre-hire checks</li>
+        </ul>
+        <p style="margin-top: 16px; margin-bottom: 0;">For current availability and a tailored quote, please contact our team.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2>Found the Right Vehicle?</h2>
+      <p>Tell us your dates and preferred category and we’ll confirm availability and pricing quickly.</p>
+      <a href="contact.html" class="btn btn-accent">Request a Quote</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo"><span class="logo-icon">🚗</span> Hire Car</a>
+          <p>Professional car hire services you can rely on. Quality vehicles, fair prices and customer-first service.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="fleet.html">Fleet</a></li>
+            <li><a href="why.html">Why Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="fleet.html">Short-term Hire</a></li>
+            <li><a href="fleet.html">Long-term Hire</a></li>
+            <li><a href="fleet.html">Business Fleet</a></li>
+            <li><a href="contact.html">Corporate Accounts</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
+            <li><a href="mailto:bookings@hirecar.example">bookings@hirecar.example</a></li>
+            <li>Mon–Fri 8am–6pm</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Hire Car. All rights reserved.</span>
+        <span>Professional Car Hire &amp; Rental</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('open')));
+    window.addEventListener('scroll', () => document.getElementById('header').classList.toggle('scrolled', window.scrollY > 20));
+  </script>
+</body>
+</html>

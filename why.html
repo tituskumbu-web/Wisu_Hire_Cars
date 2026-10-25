@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why Choose Us | Hire Car – Reliable Car Hire</title>
+  <meta name="description" content="Discover why thousands choose Hire Car: transparent pricing, flexible terms, quality fleet, 24/7 support and professional service.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0f4c81; --primary-dark: #0a3559; --accent: #e8b923;
+      --text: #1a1a1a; --text-muted: #5a6570; --bg: #ffffff; --bg-alt: #f5f7fa;
+      --border: #e2e8f0; --shadow: 0 4px 20px rgba(15, 76, 129, 0.08); --radius: 12px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border); transition: box-shadow 0.2s;
+    }
+    .header.scrolled { box-shadow: var(--shadow); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.35rem; color: var(--primary); }
+    .logo-icon { width: 36px; height: 36px; background: var(--primary); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 0.95rem; font-weight: 500; color: var(--text-muted); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; font-size: 0.95rem; font-weight: 600; border-radius: 8px; border: none; cursor: pointer; transition: all 0.2s; }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
+    .btn-outline:hover { background: var(--primary); color: white; }
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    .menu-toggle span { display: block; width: 24px; height: 2px; background: var(--text); margin: 5px 0; }
+
+    .page-hero {
+      padding: 140px 0 70px;
+      background: linear-gradient(135deg, #f0f6fc 0%, #ffffff 100%);
+      text-align: center;
+    }
+    .page-hero .eyebrow { display: inline-block; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary); margin-bottom: 12px; }
+    .page-hero h1 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; color: var(--primary-dark); margin-bottom: 16px; }
+    .page-hero p { font-size: 1.1rem; color: var(--text-muted); max-width: 560px; margin: 0 auto; }
+
+    section { padding: 80px 0; }
+    .section-header { text-align: center; max-width: 620px; margin: 0 auto 48px; }
+    .section-header h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 700; color: var(--primary-dark); margin-bottom: 12px; }
+    .section-header p { color: var(--text-muted); }
+
+    .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+    .feature-card {
+      display: flex; gap: 20px; padding: 28px; background: var(--bg-alt);
+      border-radius: var(--radius); border: 1px solid var(--border);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .feature-card:hover { border-color: var(--primary); background: #f0f6fc; }
+    .feature-icon {
+      flex-shrink: 0; width: 56px; height: 56px; background: var(--primary); color: white;
+      border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+    }
+    .feature-card h3 { font-size: 1.15rem; margin-bottom: 8px; color: var(--primary-dark); }
+    .feature-card p { font-size: 0.98rem; color: var(--text-muted); }
+
+    .benefits { background: var(--bg-alt); }
+    .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .benefit-card {
+      background: white; padding: 32px 24px; border-radius: var(--radius);
+      border: 1px solid var(--border); box-shadow: var(--shadow); text-align: center;
+    }
+    .benefit-card .num {
+      display: inline-flex; width: 40px; height: 40px; align-items: center; justify-content: center;
+      background: var(--primary); color: white; border-radius: 50%; font-weight: 700; margin-bottom: 16px;
+    }
+    .benefit-card h3 { font-size: 1.1rem; margin-bottom: 10px; }
+    .benefit-card p { font-size: 0.95rem; color: var(--text-muted); }
+
+    .compare {
+      max-width: 800px; margin: 0 auto;
+    }
+    .compare table {
+      width: 100%; border-collapse: collapse; background: white;
+      border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .compare th, .compare td {
+      padding: 16px 20px; text-align: left; border-bottom: 1px solid var(--border);
+    }
+    .compare th { background: var(--primary); color: white; font-weight: 600; }
+    .compare tr:last-child td { border-bottom: none; }
+    .compare td:first-child { font-weight: 500; }
+    .compare .yes { color: #059669; font-weight: 600; }
+    .compare .note { color: var(--text-muted); font-size: 0.9rem; }
+
+    .testimonial {
+      background: white; border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 28px; box-shadow: var(--shadow);
+    }
+    .testimonial p { font-size: 1.05rem; color: var(--text-muted); font-style: italic; margin-bottom: 16px; }
+    .testimonial strong { display: block; color: var(--primary-dark); }
+    .testimonial span { font-size: 0.9rem; color: var(--text-muted); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+    .cta {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white; text-align: center; padding: 70px 0;
+    }
+    .cta h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 14px; }
+    .cta p { opacity: 0.9; max-width: 480px; margin: 0 auto 28px; }
+    .btn-accent { background: var(--accent); color: var(--text); }
+    .btn-accent:hover { background: #d4a61f; transform: translateY(-1px); }
+
+    .footer {
+      background: var(--primary-dark); color: rgba(255,255,255,0.85); padding: 60px 0 30px;
+    }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+    .footer-brand .logo { color: white; margin-bottom: 16px; }
+    .footer-brand .logo-icon { background: var(--accent); color: var(--text); }
+    .footer-brand p { font-size: 0.95rem; line-height: 1.7; max-width: 280px; }
+    .footer h4 { color: white; font-size: 1rem; margin-bottom: 18px; }
+    .footer ul { list-style: none; }
+    .footer ul li { margin-bottom: 10px; }
+    .footer ul a { font-size: 0.95rem; opacity: 0.85; }
+    .footer ul a:hover { opacity: 1; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.12); padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; opacity: 0.75;
+    }
+
+    @media (max-width: 960px) {
+      .features-grid, .benefits-grid, .testimonials-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none; position: absolute; top: 72px; left: 0; right: 0; background: white;
+        flex-direction: column; padding: 24px; gap: 16px; border-bottom: 1px solid var(--border); box-shadow: var(--shadow);
+      }
+      .nav-links.open { display: flex; }
+      .menu-toggle { display: block; }
+      .features-grid, .benefits-grid, .testimonials-grid, .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .compare { overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container nav">
+      <a href="index.html" class="logo"><span class="logo-icon">🚗</span> Hire Car</a>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="fleet.html">Fleet</a></li>
+          <li><a href="why.html" class="active">Why Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html" class="btn btn-primary" style="padding: 10px 20px;">Book Now</a></li>
+        </ul>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Why Choose Hire Car</span>
+      <h1>Simple, Transparent &amp; Reliable</h1>
+      <p>We focus on the details that matter so your hire experience is smooth from booking to return.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <h2>What Sets Us Apart</h2>
+        <p>Practical advantages that make hiring with us straightforward and stress-free.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">💰</div>
+          <div>
+            <h3>Clear, Transparent Pricing</h3>
+            <p>No hidden fees or last-minute surprises. You see the full cost before you confirm, including insurance options and extras.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📅</div>
+          <div>
+            <h3>Flexible Hire Terms</h3>
+            <p>Daily, weekly or monthly hire with easy extensions. Long-term customers benefit from preferential rates and dedicated support.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <div>
+            <h3>Peace of Mind Cover</h3>
+            <p>A range of insurance choices plus 24/7 roadside assistance so you are supported if anything unexpected happens.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⭐</div>
+          <div>
+            <h3>Quality, Late-Model Fleet</h3>
+            <p>Vehicles are regularly serviced, cleaned and checked before every hire. We prioritise reliability and comfort.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <div>
+            <h3>Fast, Easy Booking</h3>
+            <p>Quick quotes, straightforward paperwork and efficient vehicle handovers so you can get on the road without delay.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤝</div>
+          <div>
+            <h3>Local, Professional Team</h3>
+            <p>Friendly, experienced staff who know the fleet and can recommend the right vehicle for your needs and budget.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="benefits">
+    <div class="container">
+      <div class="section-header">
+        <h2>How We Work With You</h2>
+        <p>A clear process from first enquiry to vehicle return.</p>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="num">1</div>
+          <h3>Tell Us What You Need</h3>
+          <p>Share your dates, preferred vehicle type and any special requirements. We respond promptly with options and pricing.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="num">2</div>
+          <h3>Confirm &amp; Prepare</h3>
+          <p>Once you book, we prepare the vehicle, arrange insurance and extras, and confirm pickup details with you.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="num">3</div>
+          <h3>Drive With Confidence</h3>
+          <p>Collect your vehicle, enjoy the journey, and return it at the agreed time. Extensions and support are always available.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <h2>What You Can Expect</h2>
+        <p>A quick overview of standard inclusions when you hire with us.</p>
+      </div>
+      <div class="compare">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Included</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Pre-hire vehicle inspection</td>
+              <td class="yes">Yes</td>
+            </tr>
+            <tr>
+              <td>Basic insurance options</td>
+              <td class="yes">Yes (excess applies)</td>
+            </tr>
+            <tr>
+              <td>24/7 roadside assistance</td>
+              <td class="yes">Yes</td>
+            </tr>
+            <tr>
+              <td>Flexible hire duration</td>
+              <td class="yes">Daily / weekly / monthly</td>
+            </tr>
+            <tr>
+              <td>Additional drivers</td>
+              <td class="note">Available on request</td>
+            </tr>
+            <tr>
+              <td>Child seats &amp; GPS</td>
+              <td class="note">Available on request</td>
+            </tr>
+            <tr>
+              <td>Long-term &amp; corporate rates</td>
+              <td class="yes">Yes — ask for a quote</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: var(--bg-alt);">
+    <div class="container">
+      <div class="section-header">
+        <h2>What Customers Say</h2>
+        <p>Feedback from people who have hired with us.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <p>“Clean car, clear pricing and the pickup was quick. Exactly what we needed for a weekend trip.”</p>
+          <strong>Sarah M.</strong>
+          <span>Leisure hire</span>
+        </div>
+        <div class="testimonial">
+          <p>“We use Hire Car for short-term replacements. Reliable vehicles and good communication every time.”</p>
+          <strong>James T.</strong>
+          <span>Business customer</span>
+        </div>
+        <div class="testimonial">
+          <p>“Extended our hire mid-week without any fuss. Friendly team and fair rates for longer periods.”</p>
+          <strong>Priya K.</strong>
+          <span>Long-term hire</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2>Experience the Difference</h2>
+      <p>Get a no-obligation quote and see how straightforward car hire can be.</p>
+      <a href="contact.html" class="btn btn-accent">Request a Quote</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo"><span class="logo-icon">🚗</span> Hire Car</a>
+          <p>Professional car hire services you can rely on. Quality vehicles, fair prices and customer-first service.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="fleet.html">Fleet</a></li>
+            <li><a href="why.html">Why Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="fleet.html">Short-term Hire</a></li>
+            <li><a href="fleet.html">Long-term Hire</a></li>
+            <li><a href="fleet.html">Business Fleet</a></li>
+            <li><a href="contact.html">Corporate Accounts</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
+            <li><a href="mailto:bookings@hirecar.example">bookings@hirecar.example</a></li>
+            <li>Mon–Fri 8am–6pm</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Hire Car. All rights reserved.</span>
+        <span>Professional Car Hire &amp; Rental</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('open')));
+    window.addEventListener('scroll', () => document.getElementById('header').classList.toggle('scrolled', window.scrollY > 20));
+  </script>
+</body>
+</html>

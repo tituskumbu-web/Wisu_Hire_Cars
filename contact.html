@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Hire Car – Book &amp; Enquire</title>
+  <meta name="description" content="Contact Hire Car for quotes, bookings and fleet enquiries. Phone, email or send a message — we respond promptly.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0f4c81; --primary-dark: #0a3559; --accent: #e8b923;
+      --text: #1a1a1a; --text-muted: #5a6570; --bg: #ffffff; --bg-alt: #f5f7fa;
+      --border: #e2e8f0; --shadow: 0 4px 20px rgba(15, 76, 129, 0.08); --radius: 12px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border); transition: box-shadow 0.2s;
+    }
+    .header.scrolled { box-shadow: var(--shadow); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.35rem; color: var(--primary); }
+    .logo-icon { width: 36px; height: 36px; background: var(--primary); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 0.95rem; font-weight: 500; color: var(--text-muted); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; font-size: 0.95rem; font-weight: 600; border-radius: 8px; border: none; cursor: pointer; transition: all 0.2s; }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
+    .btn-outline:hover { background: var(--primary); color: white; }
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    .menu-toggle span { display: block; width: 24px; height: 2px; background: var(--text); margin: 5px 0; }
+
+    .page-hero {
+      padding: 140px 0 70px;
+      background: linear-gradient(135deg, #f0f6fc 0%, #ffffff 100%);
+      text-align: center;
+    }
+    .page-hero .eyebrow { display: inline-block; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary); margin-bottom: 12px; }
+    .page-hero h1 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; color: var(--primary-dark); margin-bottom: 16px; }
+    .page-hero p { font-size: 1.1rem; color: var(--text-muted); max-width: 560px; margin: 0 auto; }
+
+    section { padding: 80px 0; }
+    .section-header { text-align: center; max-width: 600px; margin: 0 auto 48px; }
+    .section-header h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 700; color: var(--primary-dark); margin-bottom: 12px; }
+    .section-header p { color: var(--text-muted); }
+
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; }
+    .contact-info h3 { font-size: 1.4rem; margin-bottom: 12px; color: var(--primary-dark); }
+    .contact-info > p { color: var(--text-muted); margin-bottom: 28px; }
+    .contact-item { display: flex; gap: 16px; margin-bottom: 24px; }
+    .contact-item .icon {
+      width: 44px; height: 44px; background: white; border: 1px solid var(--border);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      color: var(--primary); font-size: 1.2rem; flex-shrink: 0;
+    }
+    .contact-item strong { display: block; font-size: 0.95rem; margin-bottom: 2px; }
+    .contact-item span { font-size: 0.95rem; color: var(--text-muted); }
+    .contact-item a { color: var(--primary); font-weight: 500; }
+    .contact-item a:hover { text-decoration: underline; }
+
+    .contact-form {
+      background: white; padding: 36px; border-radius: var(--radius);
+      border: 1px solid var(--border); box-shadow: var(--shadow);
+    }
+    .contact-form h3 { font-size: 1.25rem; margin-bottom: 8px; color: var(--primary-dark); }
+    .contact-form > p { color: var(--text-muted); margin-bottom: 24px; font-size: 0.95rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 0.9rem; font-weight: 500; margin-bottom: 6px; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 12px 14px; border: 1px solid var(--border);
+      border-radius: 8px; font-family: inherit; font-size: 0.95rem; transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none; border-color: var(--primary);
+    }
+    .form-group textarea { min-height: 120px; resize: vertical; }
+
+    .hours-card {
+      background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 24px; margin-top: 28px;
+    }
+    .hours-card h4 { font-size: 1rem; margin-bottom: 12px; color: var(--primary-dark); }
+    .hours-card ul { list-style: none; }
+    .hours-card li { display: flex; justify-content: space-between; padding: 6px 0; font-size: 0.95rem; border-bottom: 1px solid var(--border); }
+    .hours-card li:last-child { border-bottom: none; }
+    .hours-card .day { color: var(--text); }
+    .hours-card .time { color: var(--text-muted); }
+
+    .map-placeholder {
+      background: linear-gradient(160deg, #e8f1f8, #d0e4f5); border-radius: var(--radius);
+      height: 220px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; color: var(--primary); border: 1px solid var(--border); margin-top: 28px;
+    }
+
+    .faq { background: var(--bg-alt); }
+    .faq-list { max-width: 720px; margin: 0 auto; }
+    .faq-item {
+      background: white; border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 20px 24px; margin-bottom: 12px;
+    }
+    .faq-item h3 { font-size: 1.05rem; margin-bottom: 8px; color: var(--primary-dark); }
+    .faq-item p { font-size: 0.95rem; color: var(--text-muted); }
+
+    .footer {
+      background: var(--primary-dark); color: rgba(255,255,255,0.85); padding: 60px 0 30px;
+    }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+    .footer-brand .logo { color: white; margin-bottom: 16px; }
+    .footer-brand .logo-icon { background: var(--accent); color: var(--text); }
+    .footer-brand p { font-size: 0.95rem; line-height: 1.7; max-width: 280px; }
+    .footer h4 { color: white; font-size: 1rem; margin-bottom: 18px; }
+    .footer ul { list-style: none; }
+    .footer ul li { margin-bottom: 10px; }
+    .footer ul a { font-size: 0.95rem; opacity: 0.85; }
+    .footer ul a:hover { opacity: 1; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.12); padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; opacity: 0.75;
+    }
+
+    @media (max-width: 960px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none; position: absolute; top: 72px; left: 0; right: 0; background: white;
+        flex-direction: column; padding: 24px; gap: 16px; border-bottom: 1px solid var(--border); box-shadow: var(--shadow);
+      }
+      .nav-links.open { display: flex; }
+      .menu-toggle { display: block; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container nav">
+      <a href="index.html" class="logo"><span class="logo-icon">🚗</span> Hire Car</a>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="fleet.html">Fleet</a></li>
+          <li><a href="why.html">Why Us</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+          <li><a href="contact.html" class="btn btn-primary" style="padding: 10px 20px;">Book Now</a></li>
+        </ul>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Contact</span>
+      <h1>Get in Touch</h1>
+      <p>Tell us what you need — dates, vehicle type or a long-term requirement — and we’ll help you find the right hire.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Hire Car</h3>
+          <p>We’re here to help with bookings, quotes and any questions about our fleet. Reach us by phone, email or the form.</p>
+
+          <div class="contact-item">
+            <div class="icon">📍</div>
+            <div>
+              <strong>Address</strong>
+              <span>123 Motorway Drive, Business Park, Your City</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="icon">📞</div>
+            <div>
+              <strong>Phone</strong>
+              <span><a href="tel:+15551234567">+1 (555) 123-4567</a></span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="icon">✉️</div>
+            <div>
+              <strong>Email</strong>
+              <span><a href="mailto:bookings@hirecar.example">bookings@hirecar.example</a></span>
+            </div>
+          </div>
+
+          <div class="hours-card">
+            <h4>Opening Hours</h4>
+            <ul>
+              <li><span class="day">Monday – Friday</span><span class="time">8:00 am – 6:00 pm</span></li>
+              <li><span class="day">Saturday</span><span class="time">9:00 am – 2:00 pm</span></li>
+              <li><span class="day">Sunday</span><span class="time">Closed</span></li>
+            </ul>
+          </div>
+
+          <div class="map-placeholder">📍 Map / Location</div>
+        </div>
+
+        <form class="contact-form" action="#" method="post" onsubmit="event.preventDefault(); alert('Thank you! In a live site this would send your enquiry to our team.');">
+          <h3>Send an Enquiry</h3>
+          <p>Fill in the form and we’ll get back to you as soon as possible, usually within one business day.</p>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" required placeholder="Jane Smith">
+            </div>
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required placeholder="jane@example.com">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="+1 555 000 0000">
+            </div>
+            <div class="form-group">
+              <label for="vehicle">Vehicle Interest</label>
+              <select id="vehicle" name="vehicle">
+                <option value="">Select a category</option>
+                <option>Economy</option>
+                <option>SUV &amp; Crossover</option>
+                <option>Luxury</option>
+                <option>Vans &amp; People Movers</option>
+                <option>Electric &amp; Hybrid</option>
+                <option>Premium &amp; Performance</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="pickup">Preferred Pickup Date</label>
+              <input type="date" id="pickup" name="pickup">
+            </div>
+            <div class="form-group">
+              <label for="return">Preferred Return Date</label>
+              <input type="date" id="return" name="return">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Number of drivers, special requirements, corporate account interest, or any other details..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Send Enquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="container">
+      <div class="section-header">
+        <h2>Quick Answers</h2>
+        <p>Common questions before you get in touch.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>How far in advance should I book?</h3>
+          <p>We recommend booking as early as possible, especially for weekends, holidays and popular vehicle types. Same-day hire may be available depending on stock.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What documents do I need?</h3>
+          <p>A valid full driving licence and a form of identification. Additional requirements may apply for younger drivers or certain vehicle categories — ask when you enquire.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can I extend my hire?</h3>
+          <p>Yes. Contact us before the original return time and we will confirm availability and any adjusted rate.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Do you offer long-term or corporate accounts?</h3>
+          <p>Yes. We provide flexible long-term hire and can set up corporate accounts with dedicated support. Mention this in your enquiry for a tailored quote.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo"><span class="logo-icon">🚗</span> Hire Car</a>
+          <p>Professional car hire services you can rely on. Quality vehicles, fair prices and customer-first service.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="fleet.html">Fleet</a></li>
+            <li><a href="why.html">Why Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="fleet.html">Short-term Hire</a></li>
+            <li><a href="fleet.html">Long-term Hire</a></li>
+            <li><a href="fleet.html">Business Fleet</a></li>
+            <li><a href="contact.html">Corporate Accounts</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
+            <li><a href="mailto:bookings@hirecar.example">bookings@hirecar.example</a></li>
+            <li>Mon–Fri 8am–6pm</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Hire Car. All rights reserved.</span>
+        <span>Professional Car Hire &amp; Rental</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('open')));
+    window.addEventListener('scroll', () => document.getElementById('header').classList.toggle('scrolled', window.scrollY > 20));
+  </script>
+</body>
+</html>
